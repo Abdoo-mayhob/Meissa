@@ -1,0 +1,345 @@
+/*
+Theme Name: Meissa
+Theme URI: https://wordpress.org/themes/twentytwentyone/
+Author: Abdullatif Al-Mayhob
+Author URI: https://abdoo.me
+Description: TODO
+Requires at least: 5.3
+Tested up to: 6.0
+Requires PHP: 5.6
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: meissa
+Tags: space, stars, dark
+
+General Notes:
+--------------
+- I Used paddings in html (not css) using bs p-x classes wherever I could.
+- I Didn't use rem in fonts (used px instead) cuz I don't want the design to be subjective to user settings
+
+TODO:
+--------------
+- Hyper Rendering
+
+--------------
+
+sm:  576px
+md:  768px
+lg:  768px
+xl:  1200px
+xxl: 1400px 
+
+*/
+
+/* === Colors === */
+:root {
+    --clr-pri: #f0a500;
+    --clr-sec: #EEeeEE;
+    --clr-acc: #f0a500;
+    --clr-txt: #EEeeEE;
+    --clr-bg: #082032;
+    --clr-bg-lt: #1f3445; /* Light BG Color*/
+    --clr-dt: #7d8693;    /* Details Color */
+    --clr-fil: #ff0000;   /* Random Filler */
+
+    --clr-search-txt: var(--clr-dt); /* Search Form Placeholders*/
+}
+
+
+/* === Fonts === */
+:root {
+    --fs-pri: 30px;
+    --fs-sec: 25px;
+    --fs-ter: 19px;
+    --fs-txt: 15px;
+    --fs-acc: var(--fs-txt);
+    --fs-li:  20px;
+    --fs-dt:  13px;
+}
+@media (min-width: 768px){
+    :root {
+        --fs-pri: 47px;
+        --fs-sec: 42px;
+        --fs-ter: 24px;
+        --fs-txt: 18px;
+        --fs-acc: var(--fs-txt);
+        --fs-li:  20px;
+        --fs-dt:  14px;
+    }
+}
+/* === Globals === */
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--clr-bg);
+
+    /* Global Defaults */
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+    font-size: var(--fs-txt);
+    line-height: 1.2;
+    color: var(--clr-txt);
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 500;
+    padding: 0;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+h1 {
+    color: var(--clr-pri);
+    font-size: var(--fs-pri);
+}
+h2 {
+    color: var(--clr-sec);
+    font-size: var(--fs-sec);
+}
+h3 {
+    color: var(--clr-sec);
+    font-size: var(--fs-ter);
+}
+a {
+    color: var(--clr-acc);
+    font-size: var(--fs-acc);
+    text-decoration: none;
+}
+p{
+    line-height: 1.8em;
+    color: var(--clr-txt);
+}
+img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+b, strong {
+    font-weight: bolder; 
+}
+li > a {
+    color: var(--clr-txt);
+    font-size: var(--fs-li);
+}
+button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--clr-acc);
+    color: var(--clr-txt);
+    font-size: var(--fs-txt);
+    cursor: pointer;
+}
+
+
+/* === Icons === */
+/* Icons are handled by native wp DashIcons */
+/* match elements with class starting with dashicons- */
+*[class^='dashicons-']::before, *[class*=' dashicons-']::before,
+*[class^='dashicons-']::after, *[class*=' dashicons-']::after{
+    font-family: dashicons;
+    vertical-align: middle;
+}
+
+
+/* === Single Post === */
+#breadcrumbs,
+#breadcrumbs a{
+    color: var(--clr-dt);
+}
+#breadcrumbs{
+    margin: 16px 0;
+}
+.post-meta.date,
+.post-meta.tags{
+    color: var(--clr-acc);
+}
+.read-more-wrap-for-bg{
+    background-color: var(--clr-bg-lt);
+}
+.read-more img {
+    max-width: 210px;
+}
+.read-more .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.decor-space{
+    height: 100px;
+    background-image: url("http://localhost/meissa/wp-content/uploads/2023/04/Logo.png");
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
+.decor-space::before{
+    background-color: var( --clr-bg-lt );
+    content: " ";
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+
+/* === Archive === */
+.archive h3{
+    color: var(--clr-pri);
+    font-size: var(--fs-ter);
+}
+.excerpt {
+    font-size: var(--fs-dt);
+}
+.advanced-line-clamp {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3;
+   -webkit-box-orient: vertical;
+}
+.read-more-button{
+    color: var(--clr-acc);
+}
+
+/* === Header === */
+.header-logo{
+    width: 75px;
+}
+form.search {
+    width: 400px;
+    height: 50px;
+    background-color: var( --clr-bg-lt );
+    border-radius: 10px;
+    display: flex;   
+}
+form.search input[type="search"]{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--clr-txt);
+}
+form.search input[type="search"]:focus-visible {
+    outline: 0;
+}
+form.search *[type="submit"]{
+    background: none;
+    border: none;
+    font-size: 23px;
+    color: var(--clr-search-txt);
+}
+header .main-header-row > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+header .header-menu-container > ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+header .header-menu-container > ul > li{
+    padding: 20px;
+}
+
+/* === Footer === */
+form.newsletter {
+    width: 400px;
+    height: 50px;
+    background-color: var( --clr-bg-lt );
+    border-radius: 10px;
+    display: flex;   
+    width: 75%;
+}
+form.newsletter input[type="email"]{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--clr-txt);
+
+    border-bottom: 2px solid var(--clr-acc);;
+}
+form.newsletter input[type="email"]:focus-visible {
+    outline: 0;
+}
+form.newsletter button{
+    background: none;
+    border: none;
+    font-size: 23px;
+    color: var(--clr-acc);
+}
+.colophon p{
+    font-size: var(--fs-dt);
+    color: var(--clr-dt);
+}
+.colophon a{
+    font-size: var(--fs-dt);
+    color: var(--clr-acc);
+}
+.footer-wrapper{
+    background-color: var(--clr-bg-lt);
+}
+.footer-logo{
+    width: 190px;
+}
+.footer-logo-caption{
+    font-size: 32px;
+    color: var(--clr-pri);
+}
+footer .row > *{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.footer-menu-container li {
+    padding-block: 13px;
+}
+.footer-menu-container{
+    text-align: center;
+}
+.footer-social-icons{
+    font-size: 30px;
+}
+
+/* === PlaceHolders === */
+
+::placeholder{
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: var(--fs-txt) !important;
+    color: var(--clr-search-txt) !important;
+}
+::-ms-input-placeholder{
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: var(--fs-txt) !important;
+    color: var(--clr-search-txt) !important;
+}
+::-webkit-input-placeholder{
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: var(--fs-txt) !important;
+    color: var(--clr-search-txt) !important;
+}
+::-moz-placeholder{
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: var(--fs-txt) !important;
+    color: var(--clr-search-txt) !important;
+}
+::-ms-placeholder{
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: var(--fs-txt) !important;
+    color: var(--clr-search-txt) !important;
+}
