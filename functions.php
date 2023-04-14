@@ -2,8 +2,10 @@
 
 define('SITE_URL' , site_url());
 
+require_once get_template_directory() . "/inc/most_read.php";
 require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/optimizations.php";
+require_once get_template_directory() . "/inc/enqueue.php";
 
 // --------------------------------------------------------------------------------------
 // Theme Setup

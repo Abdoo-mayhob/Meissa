@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="container p-2 d-flex flex-wrap justify-content-center justify-content-md-between colophon" id="colophon">
-        <p class="copywrite">جميع الحقوق محفوظة - ميسان 2022</p>
+        <p class="copywrite">جميع الحقوق محفوظة. ميسان 2022 - <?=date("Y")?></p>
         <p class="credit">تصميم و تطوير:<a href="https://abdoo.me"> Abdullatif Al-Mayhob</a></p>
     </div>
 </footer>
