@@ -20,7 +20,15 @@ General Notes:
 
 TODO:
 --------------
+- Views Counter 
+-- metafield
+-- listing table column
+-- get most read function
+
+
+
 - Hyper Rendering
+
 
 --------------
 
@@ -131,7 +139,12 @@ button {
     font-size: var(--fs-txt);
     cursor: pointer;
 }
-
+pre {
+    padding: 30px;
+    background-color: var(--clr-bg-lt);
+    border: 1px solid var(--clr-acc);
+    border-radius: 10px;
+}
 
 /* === Icons === */
 /* Icons are handled by native wp DashIcons */

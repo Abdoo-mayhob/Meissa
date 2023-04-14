@@ -3,7 +3,7 @@
 <div class="container py-4">
     <div class="row content-row">
         <main class="col-md-7">
-            <?= meissa_breadcrumb()?>
+            <?= meissa_get_breadcrumb()?>
             <h1 class="title">
                 <? the_title() ?>
             </h1>
