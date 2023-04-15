@@ -2,7 +2,7 @@
 
 define('SITE_URL' , site_url());
 
-require_once get_template_directory() . "/inc/most_read.php";
+require_once get_template_directory() . "/inc/most-read.php";
 require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/optimizations.php";
 require_once get_template_directory() . "/inc/enqueue.php";
@@ -13,6 +13,7 @@ require_once get_template_directory() . "/inc/enqueue.php";
 add_action( 'after_setup_theme', 'meissa_theme_setup' );
 function meissa_theme_setup() {
 
+	add_post_type_support( 'page', 'excerpt' );
 	add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size(250,130);
     add_theme_support( 'custom-logo' );
@@ -36,6 +37,7 @@ function meissa_register_menus() {
     register_nav_menu('footer-menu', 'Footer Menu' );
 }
 
+
 // --------------------------------------------------------------------------------------
 // Getters
 
@@ -48,10 +50,9 @@ function meissa_get_breadcrumb(){
     }
 }
 
-
 function meissa_get_related_posts(){
     return new WP_Query([
-        'category__in' => get_the_category(),
+        'category__in' => wp_get_post_categories(get_the_ID(),['fields'=>'ids']),
         'post__not_in' => [get_the_ID()],
         'posts_per_page' => '6',
         'no_found_rows' => true, // Ignores pagination, Increases Performance
@@ -81,6 +82,7 @@ add_action( 'wp_ajax_meissa_load_more_posts_archive', 'meissa_load_more_posts' )
 add_action( 'wp_ajax_nopriv_meissa_load_more_posts_archive', 'meissa_load_more_posts' );
 function meissa_load_more_posts() {
 
+	$template_to_use = $_POST['template_to_use'];
 	$paged = $_POST['page'];
 	$org_wp_query_vars = json_decode( stripslashes( $_POST['org_wp_query_vars'] ), true );
 	$org_wp_query_vars['paged'] = $paged;
@@ -91,7 +93,7 @@ function meissa_load_more_posts() {
 
 	while ( $more_posts->have_posts() ): $more_posts->the_post();?>
 		<div class="col-md-6">
-			<? get_template_part('template-parts/loop','excerpt') ?>
+			<? get_template_part('template-parts/loop', $template_to_use) ?>
 		</div>
 	<?
 	endwhile ;

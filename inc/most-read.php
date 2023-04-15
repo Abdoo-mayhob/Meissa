@@ -6,6 +6,8 @@
  */
 
 define('MEISSA_POST_VIEWS_COUNT_META_KEY' , 'views');
+define('MEISSA_MOST_READ_PAGE_NAME' , 'الأكثر قراءة');
+
 
 // --------------------------------------------------------------------------------------
 // Getters
@@ -13,10 +15,10 @@ define('MEISSA_POST_VIEWS_COUNT_META_KEY' , 'views');
 function meissa_get_most_read_posts(){
     return new WP_Query([
         'posts_per_page' => '6',
-        'no_found_rows' => true, // Ignores pagination, Increases Performance
 		'meta_key'      => MEISSA_POST_VIEWS_COUNT_META_KEY,
 		'orderby'       => 'meta_value_num',
 		'order'         => 'DESC'
+        //'no_found_rows' => true, // Ignores pagination, Increases Performance
     ]);
 }
 
@@ -27,10 +29,29 @@ function meissa_get_post_views($post_id) {
 
 
 // --------------------------------------------------------------------------------------
+// Generate Most Read Page
+
+add_action( 'init', 'meissa_create_most_read_page' );
+function meissa_create_most_read_page() {
+	$title = MEISSA_MOST_READ_PAGE_NAME;
+	$page = get_page_by_path( sanitize_title( $title ), OBJECT, 'page' );
+	if ( $page ) return;
+	wp_insert_post([
+		'post_title'   => $title,
+		'post_content' => '<!-- This page is generated with code, And cant be deleted. To hide this page convert it to Draft. -->',
+		'post_type'    => 'page',
+		'post_status'  => 'publish',
+		'page_template'=> 'template-parts/page-most-read.php'
+	]);
+}
+
+// --------------------------------------------------------------------------------------
 // Increase Post Views on Visit
 
 add_action( 'wp_head', 'meissa_set_post_views');
 function meissa_set_post_views() {
+	// Only Run in pages or posts, in terms $post->ID will be the first post id not the term's
+	if( ! is_single(get_the_ID()))return;
 	global $post;
 	$post_id = $post->ID;
 	$count = meissa_get_post_views($post_id);
@@ -53,7 +74,6 @@ function meissa_add_postviews_column($defaults) {
 add_action( 'manage_post_posts_custom_column', 'meissa_add_postviews_column_content', 10, 2);
 add_action( 'manage_page_posts_custom_column', 'meissa_add_postviews_column_content', 10, 2);
 function meissa_add_postviews_column_content($column_name, $post_id) {
-	
 	if ($column_name === 'views' )
 		echo get_post_meta($post_id, MEISSA_POST_VIEWS_COUNT_META_KEY, true);
 }

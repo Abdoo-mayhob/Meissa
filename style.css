@@ -20,6 +20,8 @@ General Notes:
 
 TODO:
 --------------
+- Defualts for the_exerept (Pages and Posts)
+- Defualts for the_archive_description (Taxonomies)
 - Hyper Rendering
 
 --------------
@@ -148,6 +150,43 @@ pre {
 }
 
 
+/* === SideBar === */
+aside {
+    text-align: center;
+}
+/* === Loop === */
+.loop img{
+    max-width: 250px;
+}
+
+.loop-vert{
+    text-align: center;
+} 
+.loop-vert-excerpt{
+    max-width: 330px;
+} 
+.loop-vert-excerpt h3{
+    color: var(--clr-pri);
+} 
+.loop-vert-excerpt img{
+    max-width: 330px;
+} 
+
+.excerpt {
+    font-size: var(--fs-dt);
+}
+.advanced-line-clamp {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+.read-more-button{
+    color: var(--clr-acc);
+}
+
 /* === Single Post === */
 #breadcrumbs,
 #breadcrumbs a{
@@ -196,24 +235,7 @@ pre {
 
 
 /* === Archive === */
-.archive h3{
-    color: var(--clr-pri);
-    font-size: var(--fs-ter);
-}
-.excerpt {
-    font-size: var(--fs-dt);
-}
-.advanced-line-clamp {
-    overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
-           line-clamp: 3;
-   -webkit-box-orient: vertical;
-}
-.read-more-button{
-    color: var(--clr-acc);
-}
+
 
 /* === Header === */
 .header-logo{

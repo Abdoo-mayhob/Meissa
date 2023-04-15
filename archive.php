@@ -4,17 +4,17 @@
         <main class="col-md-8">
             <?= meissa_get_breadcrumb()?>
             <h1 class="title">
-                <? the_archive_title() ?>
+                <? is_archive() ? the_archive_title() : the_title() ?>
             </h1>
             <div class="description">
-                <? the_archive_description() ?>
+                <? is_archive() ? the_archive_description() : the_excerpt() ?>
             </div>
             <div class="container py-5">
-                <div class="row g-5 archive-posts">
+                <div class="row g-5 archive-posts" data-template="vert-excerpt">
                     
                     <? while (have_posts() ): the_post();?>
-                        <article class="col-md-6">
-                            <? get_template_part('template-parts/loop') ?>
+                        <article class="col-md-6 p-4">
+                            <? get_template_part('template-parts/loop', 'vert-excerpt') ?>
                         </article>
                     <? endwhile ?>
                 </div>
@@ -25,11 +25,11 @@
                 </div>
             </div>
         </main>
-        <side class="col-md-4">
+        <aside class="col-md-4">
             <h2>آخر المقالات</h2>
             <? $latest_posts = meissa_get_latest_posts(); ?>
             <? while (  $latest_posts->have_posts() ):  $latest_posts->the_post();?>
-                <? get_template_part('template-parts/loop') ?>
+                <? get_template_part('template-parts/loop','vert') ?>
             <? endwhile ?>
         </side>
     </div>

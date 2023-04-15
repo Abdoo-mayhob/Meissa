@@ -1,5 +1,4 @@
 <? get_header() ?>
-
 <div class="container py-4">
     <div class="row content-row">
         <main class="col-md-7">
