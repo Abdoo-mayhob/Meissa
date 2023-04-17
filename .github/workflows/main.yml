@@ -1,0 +1,23 @@
+name: FTP Deploy on Push
+
+on:
+  push:
+    branches:
+    - main
+  
+jobs:
+  web_deploy:
+    name: deploy to staging
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Get Latest Code
+      uses: actions/checkout@v2
+    
+    - name: Sync Files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVERNAME}}
+        username: ${{ secrets.FTP_USERNAME}}
+        password: ${{ secrets.FTP_PASSWORD}}
+        server-dir: /
+  
