@@ -8,7 +8,7 @@ on:
 jobs:
   web_deploy:
     name: deploy to staging
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Get Latest Code
       uses: actions/checkout@v2
