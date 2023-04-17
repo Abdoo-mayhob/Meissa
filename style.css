@@ -20,6 +20,8 @@ General Notes:
 
 TODO:
 --------------
+- Auto Complete for Search
+- Search Results Page
 - Defualts for the_exerept (Pages and Posts)
 - Defualts for the_archive_description (Taxonomies)
 - Hyper Rendering
@@ -276,6 +278,12 @@ header .header-menu-container > ul{
 header .header-menu-container > ul > li{
     padding: 20px;
 }
+header .header-menu-container > ul > li:hover{
+    transition: .4s;
+    -webkit-transform: translateY(8px);
+    -ms-transform: translateY(8px);
+    transform: translateY(8px);
+}
 
 /* === Footer === */
 form.newsletter {
@@ -330,6 +338,12 @@ footer .row > *{
 }
 .footer-menu-container li {
     padding-block: 13px;
+}
+.footer-menu-container li:hover {
+    transition: .4s;
+    -webkit-transform: translateY(-8px);
+    -ms-transform: translateY(-8px);
+    transform: translateY(-8px);
 }
 .footer-menu-container{
     text-align: center;

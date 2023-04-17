@@ -7,6 +7,10 @@ require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/optimizations.php";
 require_once get_template_directory() . "/inc/enqueue.php";
 
+// Required Plugins
+// Note to Devs: This has almost no impact on performance
+require_once get_template_directory() . "/inc/class-tgm-plugin-activation.php";
+
 // --------------------------------------------------------------------------------------
 // Theme Setup
 
@@ -46,7 +50,7 @@ function meissa_get_breadcrumb(){
         return yoast_breadcrumb( '<div id="breadcrumbs"','</div>', false);
     }
     else {
-        return "ACTIVATE YOAST SEO!";
+        return "<!-- Please Install & Activate YOAST SEO -->";
     }
 }
 
@@ -67,8 +71,8 @@ function meissa_get_latest_posts(){
 }
 
 
-function meissa_get_logo_url(){
-    return esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0] );
+function meissa_get_logo_url($size = 'full'){
+    return esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $size )[0] );
 }
 
 

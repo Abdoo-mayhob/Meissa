@@ -17,7 +17,7 @@
         <div class="row main-header-row">
             <div class="col-lg-2 col-3">
                 <a href="<?=SITE_URL?>">
-                    <img width="75" height="75" src="<?=get_stylesheet_directory_uri() . '/meissa-assets/logo.png'?>" alt="Site Logo" class="header-logo">
+                    <img width="75" height="75" src="<?=meissa_get_logo_url('thumbnail')?>" alt="Site Logo" class="header-logo">
                 </a>
             </div>
             <div class="col-lg-4 col-8">
