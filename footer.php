@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ">
-                    <img width="190" height="190" src="<?=get_stylesheet_directory_uri() . '/meissa-assets/logo-white.png'?>" alt="Site Logo" class="footer-logo">
+                    <img width="190" height="190" src="<?=get_theme_mod('meissa_footer_logo')?>" alt="Site Logo" class="footer-logo">
                     <div class="footer-logo-caption">Meissa - ميسان</div>
                     <div class="footer-logo-desc">كل ما يخص الفضاء و الكون وتاريخه وتقنياته. شاركنا رحلة التعلم ! </div>
                 </div>
@@ -17,8 +17,8 @@
 
                     <h3 class="mb-0">تابعنا على السوشل ميديا</h3>
                     <div class="footer-social-icons pb-4 pt-1">
-                        <span class="dashicons-facebook-alt"></span>
-                        <span class="dashicons-instagram"></span>
+                        <a href='<?= get_theme_mod('meissa_facebook_link')?>' class="dashicons-facebook-alt"></a>
+                        <a href='<?= get_theme_mod('meissa_instagram_link')?>' class="dashicons-instagram"></a>
                     </div>
                     <h3 class="mb-0">و اشترك في النشرة البريدية</h3>
                     <form class="newsletter" action="/" method="post">

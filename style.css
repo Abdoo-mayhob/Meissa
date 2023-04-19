@@ -20,10 +20,13 @@ General Notes:
 
 TODO:
 --------------
+- Design and add side bar on singles
+- Home Page
+
 - Auto Complete for Search
 - Search Results Page
-- Defualts for the_exerept (Pages and Posts)
-- Defualts for the_archive_description (Taxonomies)
+- Default for the_exerept (Pages and Posts)
+- Default for the_archive_description (Taxonomies)
 - Hyper Rendering
 
 --------------
@@ -348,7 +351,7 @@ footer .row > *{
 .footer-menu-container{
     text-align: center;
 }
-.footer-social-icons{
+.footer-social-icons a{
     font-size: 30px;
 }
 

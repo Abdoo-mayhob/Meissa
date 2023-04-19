@@ -31,7 +31,7 @@
             <? while (  $latest_posts->have_posts() ):  $latest_posts->the_post();?>
                 <? get_template_part('template-parts/loop','vert') ?>
             <? endwhile ?>
-        </side>
+        </aside>
     </div>
 </div>
 <? get_footer() ?>

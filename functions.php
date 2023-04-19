@@ -11,36 +11,6 @@ require_once get_template_directory() . "/inc/enqueue.php";
 // Note to Devs: This has almost no impact on performance
 require_once get_template_directory() . "/inc/class-tgm-plugin-activation.php";
 
-// --------------------------------------------------------------------------------------
-// Theme Setup
-
-add_action( 'after_setup_theme', 'meissa_theme_setup' );
-function meissa_theme_setup() {
-
-	add_post_type_support( 'page', 'excerpt' );
-	add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size(250,130);
-    add_theme_support( 'custom-logo' );
-	add_theme_support(
-		'html5',
-		[
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-        ]
-	);
-}
-
-add_action( 'init', 'meissa_register_menus' );
-function meissa_register_menus() {
-    register_nav_menu('header-menu', 'Header Menu' );
-    register_nav_menu('footer-menu', 'Footer Menu' );
-}
-
 
 // --------------------------------------------------------------------------------------
 // Getters
@@ -103,3 +73,4 @@ function meissa_load_more_posts() {
 	endwhile ;
 	die;
 }
+
