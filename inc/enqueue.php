@@ -24,4 +24,8 @@ function meissa_theme_scripts() {
 			'current_wp_query_vars' => json_encode( $wp_query->query_vars ),
 		]);
 	}
+	if(is_404()){ 
+		wp_enqueue_script('particles-js', get_stylesheet_directory_uri() . '/js/particles.min.js',[], '2.0',true);
+		wp_enqueue_script('404-js', get_stylesheet_directory_uri() . '/js/404.js',['particles-js'], '1.0',true);
+	}
 }

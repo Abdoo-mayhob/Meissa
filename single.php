@@ -1,7 +1,7 @@
 <? get_header() ?>
 <div class="container py-4">
     <div class="row content-row">
-        <main class="col-md-7">
+        <main class="col-md-8 px-4">
             <?= meissa_get_breadcrumb()?>
             <h1 class="title">
                 <? the_title() ?>
@@ -17,9 +17,21 @@
                 <? the_tags('') ?>
             </div>
         </main>
-        <side class="col-md-5">
-            <h2>sidebar</h2>
-        </side>
+        <aside class="col-md-4 px-4">
+            <h2>آخر المقالات</h2>
+            <? $latest_posts = meissa_get_latest_posts(); ?>
+            <? while (  $latest_posts->have_posts() ):  $latest_posts->the_post();?>
+                <? get_template_part('template-parts/loop','vert') ?>
+            <? endwhile ?>
+            <? wp_reset_postdata() ?>
+            <div class="seperator"></div>
+            <h2>الأكثر قراءة</h2>
+            <? $most_read_posts = meissa_get_most_read_posts(); ?>
+            <? while (  $most_read_posts->have_posts() ):  $most_read_posts->the_post();?>
+                <? get_template_part('template-parts/loop','vert') ?>
+            <? endwhile ?>
+            <? wp_reset_postdata() ?>
+        </aside>
     </div>
 </div>
 <div class="read-more-wrap-for-bg">

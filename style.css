@@ -20,11 +20,9 @@ General Notes:
 
 TODO:
 --------------
-- Design and add side bar on singles
-- Home Page
 
+- Home Page
 - Auto Complete for Search
-- Search Results Page
 - Default for the_exerept (Pages and Posts)
 - Default for the_archive_description (Taxonomies)
 - Hyper Rendering
@@ -155,9 +153,33 @@ pre {
 }
 
 
+/* === 404 === */
+main {
+    width: 100vw;
+    height: 100vh;
+}
+main > .content {
+    width: max-content;
+    text-align: center;
+    position: absolute;
+    left: 50vw;
+    transform: translatex(-50%);
+    margin-top: 10vh;
+}
+main > .latest-articles {
+    text-align: center;
+    position: absolute;
+    left: 50vw;
+    transform: translatex(-50%);
+    margin-top: 30vh;
+}
 /* === SideBar === */
 aside {
     text-align: center;
+}
+.seperator{
+    border-bottom: 3px solid var(--clr-acc);
+    margin-block: 1rem;
 }
 /* === Loop === */
 .loop img{
