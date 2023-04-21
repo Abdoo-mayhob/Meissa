@@ -29,14 +29,15 @@ function meissa_theme_setup() {
         ]
 	);
     add_theme_support( 'title-tag' );
-}
 
+    // ------------------------------------------------------
+    // Create Featured Posts Tag Setup
+    if( !term_exists( 'مقالات مختارة', 'post_tag' ) ) {
+        wp_insert_term( 'مقالات مختارة', 'post_tag' );
+    }
 
-// --------------------------------------------------------------------------------------
-// Menus Setup
-
-add_action( 'init', 'meissa_register_menus' );
-function meissa_register_menus() {
+    // ------------------------------------------------------
+    // Menus Setup
     register_nav_menu('header-menu', 'Header Menu' );
     register_nav_menu('footer-menu', 'Footer Menu' );
 }

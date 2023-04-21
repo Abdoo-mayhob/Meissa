@@ -1,7 +1,9 @@
 <?php 
 
 define('SITE_URL' , site_url());
+define('THEME_URI' , get_stylesheet_directory_uri());
 
+require_once get_template_directory() . "/inc/theme-setup.php";
 require_once get_template_directory() . "/inc/most-read.php";
 require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/optimizations.php";
@@ -36,7 +38,17 @@ function meissa_get_related_posts(){
 function meissa_get_latest_posts(){
     return new WP_Query([
         'posts_per_page' => '6',
+        'post__not_in' => [get_the_ID()],
         'no_found_rows' => true, // Ignores pagination, Increases Performance
+    ]);
+}
+
+function meissa_get_featured_posts($number_of_posts){
+    return new WP_Query([
+        'tag' => 'مقالات-مختارة',
+        'posts_per_page' => (string) $number_of_posts,
+        'post__not_in' => [get_the_ID()],
+        // 'no_found_rows' => true, // Ignores pagination, Increases Performance
     ]);
 }
 

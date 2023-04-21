@@ -88,13 +88,13 @@ body {
     line-height: 1.2;
     color: var(--clr-txt);
 }
-h1, h2, h3, h4, h5, h6{
+h1, .h1, h2, h3, h4, h5, h6{
     font-weight: 500;
     padding: 0;
     margin-top: .5rem;
     margin-bottom: 1rem;
 }
-h1 {
+h1, .h1 {
     color: var(--clr-pri);
     font-size: var(--fs-pri);
 }
@@ -154,11 +154,11 @@ pre {
 
 
 /* === 404 === */
-main {
+.error404 main {
     width: 100vw;
     height: 100vh;
 }
-main > .content {
+.error404 main > .content {
     width: max-content;
     text-align: center;
     position: absolute;
@@ -166,13 +166,41 @@ main > .content {
     transform: translatex(-50%);
     margin-top: 10vh;
 }
-main > .latest-articles {
+.error404 main > .latest-articles {
     text-align: center;
     position: absolute;
     left: 50vw;
     transform: translatex(-50%);
     margin-top: 30vh;
 }
+
+
+/* === Home === */
+
+/* Could've used bootstrap,
+    but cleaner this way */
+.center-vertically{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-width: 768px){
+    .meissa-hide-md{
+        display: none;
+    }
+}
+
+#Floating-Astro {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%   {transform: translate(0, 0px);}
+    50%  {transform: translate(0, 15px);}
+    100% {transform: translate(0, -0px);}
+}
+
+
 /* === SideBar === */
 aside {
     text-align: center;
