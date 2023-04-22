@@ -57,12 +57,26 @@ function meissa_get_logo_url($size = 'full'){
     return esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $size )[0] );
 }
 
+// Used to help display bg img instead of <img> with minimal syntax
+function meissa_bg_img($image_path, $height = '400px'){
+    echo 'style="background-image: url(' . $image_path . ');height:' . $height . '"';
+}
+function meissa_post_thumb_url(){
+    return get_the_post_thumbnail_url(get_the_ID());
+}
+
+
+// --------------------------------------------------------------------------------------
+// 
 
 add_filter( 'get_the_archive_title', 'remove_wp_default_arhive_title_prefix', 10, 3 );
 function remove_wp_default_arhive_title_prefix( $title, $original_title, $prefix){
 	return $original_title;
 }
 
+
+// --------------------------------------------------------------------------------------
+// Ajax
 
 add_action( 'wp_ajax_meissa_load_more_posts_archive', 'meissa_load_more_posts' );
 add_action( 'wp_ajax_nopriv_meissa_load_more_posts_archive', 'meissa_load_more_posts' );

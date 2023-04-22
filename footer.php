@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ">
-                    <img width="190" height="190" src="<?=get_theme_mod('meissa_footer_logo')?>" alt="Site Logo" class="footer-logo">
+                    <img width="190" height="190" loading="lazy" src="<?=get_theme_mod('meissa_footer_logo')?>" alt="Site Logo" class="footer-logo">
                     <div class="footer-logo-caption">Meissa - ميسان</div>
                     <div class="footer-logo-desc">كل ما يخص الفضاء و الكون وتاريخه وتقنياته. شاركنا رحلة التعلم ! </div>
                 </div>

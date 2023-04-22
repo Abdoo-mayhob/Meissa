@@ -6,8 +6,8 @@
             <p class="sub-title">كل ما يخص الفضاء و الكون وتاريخه وتقنياته
             شاركنا رحلة التعلم !</p>
         </div>
-        <div class="meissa-hide-md col-md-6 ">
-            <img src="<?=THEME_URI?>/meissa-assets/James-Web-Telescope.webp" alt="">
+        <div class="meissa-hide-md col-md-6" 
+            <? meissa_bg_img(THEME_URI.'/meissa-assets/James-Web-Telescope.webp','400px') ?>>
         </div>
     </section>
     <section class="row">
@@ -22,25 +22,25 @@
                 <? endwhile ?>
             </div>
         </div>
-        <div class="meissa-hide-md col-md-6 ">
-            <img id="Floating-Astro" src="<?=THEME_URI?>/meissa-assets/Floating-Astro.webp" alt="">
+        <div id="Floating-Astro" class="meissa-hide-md col-md-6"
+            <? meissa_bg_img(THEME_URI.'/meissa-assets/Floating-Astro.webp','580px') ?>>
         </div>
     </section>
     <section class="row">
         <h2 class="col-12 h1">الأكثر قراءة</h2>
         <? $most_read_posts = meissa_get_most_read_posts(); ?>
         <? while (  $most_read_posts->have_posts() ):  $most_read_posts->the_post();?>
-            <article class="col-6 pb-3">
+            <article class="col-md-6 pb-3">
                 <? get_template_part('template-parts/loop') ?>
             </article>
         <? endwhile ?>
         <? wp_reset_postdata() ?>
     </section>
-    <section class="row">
+    <section class="row mt-4">
         <h2 class="col-12 h1">أٌضيف مؤخراً</h2>
         <? $latest_posts = meissa_get_latest_posts(); ?>
         <? while (  $latest_posts->have_posts() ):  $latest_posts->the_post();?>
-            <article class="col-6 pb-3">
+            <article class="col-md-6 pb-3">
                 <? get_template_part('template-parts/loop') ?>
             </article>
         <? endwhile ?>

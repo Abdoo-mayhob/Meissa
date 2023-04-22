@@ -17,11 +17,9 @@ General Notes:
 --------------
 - I Used paddings in html (not css) using bs p-x classes wherever I could.
 - I Didn't use rem in fonts (used px instead) cuz I don't want the design to be subjective to user settings
-
+- Most Images are background-image instead of <img> because it won't load when display:none (better performance)
 TODO:
 --------------
-
-- Home Page
 - Auto Complete for Search
 - Default for the_exerept (Pages and Posts)
 - Default for the_archive_description (Taxonomies)
@@ -115,11 +113,6 @@ p{
     line-height: 1.8em;
     color: var(--clr-txt);
 }
-img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
 b, strong {
     font-weight: bolder; 
 }
@@ -140,6 +133,17 @@ pre {
     padding: 30px;
     background-color: var(--clr-bg-lt);
     border: 1px solid var(--clr-acc);
+    border-radius: 10px;
+}
+img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+*[style*="background-image"] {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 10px;
 }
 
@@ -185,7 +189,7 @@ pre {
     justify-content: center;
 }
 @media (max-width: 768px){
-    .meissa-hide-md{
+    .meissa-hide-md {
         display: none;
     }
 }
@@ -210,12 +214,16 @@ aside {
     margin-block: 1rem;
 }
 /* === Loop === */
-.loop img{
+.loop *[style*="background-image"]{
     max-width: 250px;
-}
+    background-size: cover;
+    background-position: initial;
+    margin-inline: auto;
 
+}
 .loop-vert{
     text-align: center;
+    display: block;
 } 
 .loop-vert-excerpt{
     max-width: 330px;
@@ -223,7 +231,7 @@ aside {
 .loop-vert-excerpt h3{
     color: var(--clr-pri);
 } 
-.loop-vert-excerpt img{
+.loop-vert-excerpt *[style*="background-image"]{
     max-width: 330px;
 } 
 
