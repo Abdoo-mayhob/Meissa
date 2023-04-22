@@ -7,6 +7,7 @@
                 <? the_title() ?>
             </h1>
             <div class="content">
+                <? the_post_thumbnail( 'full' )?>
                 <? the_content() ?>
             </div>
             

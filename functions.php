@@ -62,7 +62,9 @@ function meissa_bg_img($image_path, $height = '400px'){
     echo 'style="background-image: url(' . $image_path . ');height:' . $height . '"';
 }
 function meissa_post_thumb_url(){
-    return get_the_post_thumbnail_url(get_the_ID());
+    // return get_the_post_thumbnail_url(get_the_ID(),'thumbnail');
+    // Both work, But this is a bit less code in wp core
+    return  wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' )[0];
 }
 
 
