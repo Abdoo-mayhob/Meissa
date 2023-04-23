@@ -1,7 +1,11 @@
 <?php 
+// Used in footer.php
+$GLOBALS['start_ms']  = microtime(true);
 
+// Globals
 define('SITE_URL' , site_url());
 define('THEME_URI' , get_stylesheet_directory_uri());
+
 
 require_once get_template_directory() . "/inc/theme-setup.php";
 require_once get_template_directory() . "/inc/most-read.php";
@@ -11,7 +15,6 @@ require_once get_template_directory() . "/inc/enqueue.php";
 // Required Plugins
 // Note to Devs: This has almost no impact on performance
 require_once get_template_directory() . "/inc/class-tgm-plugin-activation.php";
-
 
 // --------------------------------------------------------------------------------------
 // Getters

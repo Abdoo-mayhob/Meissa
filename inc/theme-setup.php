@@ -36,9 +36,9 @@ function meissa_theme_setup() {
     update_option( 'large_size_w', 0 );
     update_option( 'large_size_h', 0 );
 
-    // Upadte the Thumbnail default size
+    // Upadte the Thumbnail default size (250w*130hmax250h)
     update_option( 'thumbnail_size_w', 250 );
-    update_option( 'thumbnail_size_h', 130 );
+    update_option( 'thumbnail_size_h', 250 );
 
 
     // Show excerpt field in pages
