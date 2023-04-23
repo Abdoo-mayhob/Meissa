@@ -97,9 +97,9 @@ function meissa_load_more_posts() {
 
 	while ( $more_posts->have_posts() ): $more_posts->the_post();?>
 		<div class="col-md-6">
-			<? get_template_part('template-parts/loop', $template_to_use) ?>
+			<?php get_template_part('template-parts/loop', $template_to_use) ?>
 		</div>
-	<?
+	<?php
 	endwhile ;
 	die;
 }

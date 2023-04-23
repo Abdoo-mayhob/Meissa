@@ -51,6 +51,25 @@ xxl: 1400px
 
 
 /* === Fonts === */
+@font-face {
+    font-family: 'Tajawal';
+    src: url('fonts/Tajawal-Medium.woff2') format('woff2'),
+        url('fonts/Tajawal-Medium.woff') format('woff'),
+        url('fonts/Tajawal-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal';
+    src: url('fonts/Tajawal-Regular.woff2') format('woff2'),
+        url('fonts/Tajawal-Regular.woff') format('woff'),
+        url('fonts/Tajawal-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 :root {
     --fs-pri: 30px;
     --fs-sec: 25px;

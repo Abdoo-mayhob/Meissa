@@ -10,7 +10,7 @@ function meissa_theme_scripts() {
 	wp_enqueue_style( 'bootstrap-grid-rtl', get_stylesheet_directory_uri() . '/css/bootstrap-grid.rtl.min.css', [], '5.3.0');
 	wp_enqueue_style( 'meissa-style-reset', get_stylesheet_directory_uri() . '/css/css-reset.css', [], '1.1');
 	wp_enqueue_style( 'meissa-style', get_stylesheet_uri(), [], null);
-	wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
+	// wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
 	wp_enqueue_style( 'dashicons');
     wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', ['jquery'], '1.1');
 

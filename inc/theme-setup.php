@@ -74,6 +74,29 @@ function meissa_theme_setup() {
     register_nav_menu('footer-menu', 'Footer Menu' );
 }
 
+// ------------------------------------------------------------------------------------------------
+// Edit .htaccess to serve webp when possible and activate php short tags
+add_action('admin_init', 'meissa_edit_htaccess');
+function meissa_edit_htaccess(){
+    $lines = [];
+    $lines[] = 'php_value short_open_tag 1';
+    $lines[] = '
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png|gif)$
+    RewriteCond %{REQUEST_FILENAME}\.webp -f
+    RewriteRule (.+)\.(jpe?g|png|gif)$ %{REQUEST_URI}\.webp [T=image/webp,E=webp,L]
+</IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpe?g|png|gif)$">
+        Header append Vary Accept
+    </FilesMatch>
+</IfModule>
+AddType image/webp .webp
+    ';
+    insert_with_markers(get_home_path().".htaccess", "Meissa", $lines);
+}
 
 // ------------------------------------------------------------------------------------------------
 // Optimization Related Codes.
@@ -81,6 +104,16 @@ function meissa_theme_setup() {
 // Remove some unwanted wp default bloat styles
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
+
+add_action( 'wp_enqueue_scripts', 'meissa_remove_wp_bloat' );
+function meissa_remove_wp_bloat(){
+    wp_dequeue_style( 'classic-theme-styles' );
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'wc-blocks-style' ); // WooCommerce block CSS
+}
+
 
 // ------------------------------------------------------
 // Remove comments completely
