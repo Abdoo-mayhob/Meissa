@@ -12,7 +12,9 @@ function meissa_theme_scripts() {
 	wp_enqueue_style( 'meissa-style', get_stylesheet_uri(), [], null);
 	// wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
 	wp_enqueue_style( 'dashicons');
-    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', ['jquery'], '1.1');
+
+	// This will also include jquery (without jquery migrate) 
+    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', ['jquery-core'], '1.1');
 
 	// Only Load the following scripts on pages containing "Load More" Button
 	// is_page(MEISSA_MOST_READ_PAGE_NAME) will not work here cuz we modified the default wp_query
