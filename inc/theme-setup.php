@@ -114,6 +114,13 @@ function meissa_remove_wp_bloat(){
     wp_dequeue_style( 'wc-blocks-style' ); // WooCommerce block CSS
 }
 
+// ------------------------------------------------------
+// Defer all Scripts (including jquery)
+add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+    return str_replace( ' src', ' defer="defer" src', $tag );
+}, 10, 2 );
+
+
 
 // ------------------------------------------------------
 // Remove comments completely

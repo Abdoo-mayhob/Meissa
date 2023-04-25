@@ -6,7 +6,7 @@
             <p class="sub-title">كل ما يخص الفضاء و الكون وتاريخه وتقنياته
             شاركنا رحلة التعلم !</p>
         </div>
-        <div class="meissa-hide-md col-md-6" 
+        <div class="meissa-hide-md col-md-6"
             <? meissa_bg_img(THEME_URI.'/meissa-assets/James-Web-Telescope.webp','400px') ?>>
         </div>
     </section>
