@@ -1,5 +1,6 @@
 <div class="container-fluid">
-    <div class="row decor-space"></div>
+    <div class="row decor-space"
+        <? meissa_bg_img(get_theme_mod('meissa_footer_decor_image'),'100px')?>>></div>
 </div>
 <footer>
     <div class="footer-wrapper p-5">

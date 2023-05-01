@@ -99,6 +99,15 @@ AddType image/webp .webp
 }
 
 // ------------------------------------------------------------------------------------------------
+// Allow SVG Upload
+add_filter('upload_mimes', 'meissa_mime_types');
+function meissa_mime_types($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+
+
+// ------------------------------------------------------------------------------------------------
 // Optimization Related Codes.
 
 // Remove some unwanted wp default bloat styles
@@ -139,6 +148,12 @@ function meissa_disable_emojis_tinymce( $plugins ) {
 // ------------------------------------------------------
 // Defer all Scripts (including jquery)
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+
+    // Fix: Customizer not loading on defer.
+    global $wp_customize;
+    if ( isset( $wp_customize ) ) {
+        return $tag;
+    }
     return str_replace( ' src', ' defer="defer" src', $tag );
 }, 10, 2 );
 
@@ -206,12 +221,19 @@ function meissa_theme_customizer( $wp_customize ) {
     ] );
 
     $wp_customize->add_setting( 'meissa_footer_logo' );
+    $wp_customize->add_setting( 'meissa_footer_decor_image' );
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'meissa_footer_logo', [
         'label'    => __( 'Footer Logo', 'meissa' ),
         'section'  => 'meissa_footer_logo_section',
         'settings' => 'meissa_footer_logo',
     ] ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'meissa_footer_decor_image', [
+        'label'    => __( 'Footer Decore Image', 'meissa' ),
+        'section'  => 'meissa_footer_logo_section',
+        'settings' => 'meissa_footer_decor_image',
+    ] ) );
+
 
 	// Social Links Section
 	$wp_customize->add_section( 'meissa_social_links_section' , [

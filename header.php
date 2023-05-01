@@ -10,6 +10,9 @@
     <?php endif?> 
     <title><?=wp_title()?></title>
     <?php wp_head();?>
+    <!-- link rel="preload" as="font" href="wp-content/themes/meissa/fonts/Tajawal-Regular.woff2" type="font/woff2" crossorigin / -->
+    <!-- link rel="stylesheet" href="wp-content/themes/meissa/fonts/Tajawal-Regular.woff2" media="print" onload="this.media='all'" / -->
+
 </head>
 <body <?php body_class()?>>
 

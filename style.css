@@ -20,6 +20,7 @@ General Notes:
 - Most Images are background-image instead of <img> because it won't load when display:none (better performance)
 TODO:
 --------------
+- Lazy Load BG Images with js
 - Only load needed dashicons
 - defer css
 - Auto Complete for Search
@@ -167,16 +168,6 @@ img{
     background-position: center;
     border-radius: 10px;
 }
-
-/* === Icons === */
-/* Icons are handled by native wp DashIcons */
-/* match elements with class starting with dashicons- */
-*[class^='dashicons-']::before, *[class*=' dashicons-']::before,
-*[class^='dashicons-']::after, *[class*=' dashicons-']::after{
-    font-family: dashicons;
-    vertical-align: middle;
-}
-
 
 /* === 404 === */
 .error404 main {
