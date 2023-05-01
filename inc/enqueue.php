@@ -8,30 +8,21 @@
 add_action( 'wp_enqueue_scripts', 'meissa_theme_scripts' );
 function meissa_theme_scripts() {
 
-	// Inlining Critical Css (and fonts to avoid FOUT)
+	// Inlining Critical Css
 	// wp_enqueue_style( 'meissa-style-reset', get_stylesheet_directory_uri() . '/css/css-reset.css', [], '1.1');
-	$MEISSA_CSS = file_get_contents( get_stylesheet_directory_uri() . '/css/css-reset.css');
-	wp_register_style( 'meissa-style-reset', false );
-	wp_enqueue_style( 'meissa-style-reset' );
-	wp_add_inline_style( 'meissa-style-reset', $MEISSA_CSS );
-
 	// wp_enqueue_style( 'bootstrap-grid-rtl', get_stylesheet_directory_uri() . '/css/bootstrap-grid.rtl.min.css', [], '5.3.0');
-	$MEISSA_CSS = file_get_contents( get_stylesheet_directory_uri() . '/css/bootstrap-grid.rtl.min.css');
-	wp_register_style( 'bootstrap-grid-rtl', false );
-	wp_enqueue_style( 'bootstrap-grid-rtl' );
-	wp_add_inline_style( 'bootstrap-grid-rtl', $MEISSA_CSS );
-
 	// wp_enqueue_style( 'meissa-style', get_stylesheet_uri(), [], null);
-	$MEISSA_CSS = file_get_contents( get_stylesheet_uri());
-	wp_register_style( 'meissa-style', false );
-	wp_enqueue_style( 'meissa-style' );
-	wp_add_inline_style( 'meissa-style', $MEISSA_CSS );
+	// wp_enqueue_style('dashicons');
+	$css_files_to_inline = [
+		'meissa-style-reset' => get_stylesheet_directory_uri() . '/css/css-reset.css',
+		'bootstrap-grid-rtl' => get_stylesheet_directory_uri() . '/css/bootstrap-grid.rtl.min.css',
+		'meissa-style' 		 => get_stylesheet_uri(),
+		'meissa-dashicons' 	 => get_stylesheet_directory_uri() . '/css/meissa-dashicons.min.css'
+	];
 
-	// 	wp_enqueue_style('dashicons');
-	$MEISSA_CSS = file_get_contents(get_stylesheet_directory_uri() . '/css/meissa-dashicons.min.css');
-	wp_register_style( 'meissa-dashicons', false );
-	wp_enqueue_style( 'meissa-dashicons' );
-	wp_add_inline_style( 'meissa-dashicons', $MEISSA_CSS );
+	foreach($css_files_to_inline as $handle => $path){
+		meissa_inline_css_file($path, $handle);
+	}
 
 
 	// wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
@@ -61,4 +52,17 @@ function meissa_theme_scripts() {
 		wp_enqueue_script('particles-js', get_stylesheet_directory_uri() . '/js/particles.min.js',[], '2.0',true);
 		wp_enqueue_script('404-js', get_stylesheet_directory_uri() . '/js/404.js',['particles-js'], '1.0',true);
 	}
+}
+
+function meissa_inline_css_file($css_file_path, $handle){
+	// Minify on the fly
+	$buffer = file_get_contents($css_file_path);
+	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+    $buffer = str_replace(': ', ':', $buffer);
+    $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+
+	// Add as inline by the recommended method
+	wp_register_style( $handle, false );
+	wp_enqueue_style( $handle );
+	wp_add_inline_style( $handle, $buffer );
 }

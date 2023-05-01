@@ -18,7 +18,7 @@
 
                     <h3 class="mb-0">تابعنا على السوشل ميديا</h3>
                     <div class="footer-social-icons pb-4 pt-1">
-                        <a href='<?= get_theme_mod('meissa_facebook_link')?>' class="dashicons-facebook-alt" aria-label="Visit Meissa on Facbook">></a>
+                        <a href='<?= get_theme_mod('meissa_facebook_link')?>' class="dashicons-facebook-alt" aria-label="Visit Meissa on Facbook"></a>
                         <a href='<?= get_theme_mod('meissa_instagram_link')?>' class="dashicons-instagram" aria-label="Visit Meissa on Instagram"></a>
                     </div>
                     <h3 class="mb-0">و اشترك في النشرة البريدية</h3>
