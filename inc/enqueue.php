@@ -20,16 +20,22 @@ function meissa_theme_scripts() {
 	wp_register_style( 'bootstrap-grid-rtl', false );
 	wp_enqueue_style( 'bootstrap-grid-rtl' );
 	wp_add_inline_style( 'bootstrap-grid-rtl', $MEISSA_CSS );
-	
+
 	// wp_enqueue_style( 'meissa-style', get_stylesheet_uri(), [], null);
 	$MEISSA_CSS = file_get_contents( get_stylesheet_uri());
 	wp_register_style( 'meissa-style', false );
 	wp_enqueue_style( 'meissa-style' );
 	wp_add_inline_style( 'meissa-style', $MEISSA_CSS );
 
+	// 	wp_enqueue_style('dashicons');
+	$MEISSA_CSS = file_get_contents(get_stylesheet_directory_uri() . '/css/meissa-dashicons.min.css');
+	wp_register_style( 'meissa-dashicons', false );
+	wp_enqueue_style( 'meissa-dashicons' );
+	wp_add_inline_style( 'meissa-dashicons', $MEISSA_CSS );
+
 
 	// wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
-	wp_enqueue_style('dashicons');
+
 
 	// This will also include jquery (without jquery migrate) 
     wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', ['jquery-core'], '1.1');
