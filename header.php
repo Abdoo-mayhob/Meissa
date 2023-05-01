@@ -9,10 +9,10 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url')?>">
     <?php endif?> 
     <title><?=wp_title()?></title>
-    <?php wp_head();?>
     <link rel="preload" as="font" href="<?=SITE_URL?>/wp-content/themes/meissa/fonts/Tajawal-Regular.woff2" type="font/woff2" crossorigin />
     <link rel="preload" as="font" href="<?=SITE_URL?>/wp-content/themes/meissa/fonts/Tajawal-Medium.woff2" type="font/woff2" crossorigin />
     <link rel="preload" as="font" href="<?=SITE_URL?>/wp-includes/fonts/dashicons.woff2" type="font/woff2" crossorigin />
+    <?php wp_head();?>
 </head>
 <body <?php body_class()?>>
 
