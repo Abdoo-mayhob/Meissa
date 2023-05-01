@@ -66,7 +66,9 @@ function meissa_bg_img($image_path, $height = '400px'){
 function meissa_post_thumb_url(){
     // return get_the_post_thumbnail_url(get_the_ID(),'thumbnail');
     // Both work, But this is a bit less code in wp core
-    return  wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' )[0];
+    $url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' ) ;
+    return $url[0] ?? meissa_get_logo_url('thumbnail');
+     
 }
 
 
