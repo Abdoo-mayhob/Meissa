@@ -172,6 +172,7 @@ function meissa_remove_wp_bloat(){
 
 // ------------------------------------------------------
 // Remove wp-emoji
+
 add_action( 'init', 'meissa_remove_wp_emoji' );
 function meissa_remove_wp_emoji() {
  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -198,7 +199,7 @@ add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 
     // Fix: Customizer not loading on defer.
     global $wp_customize;
-    if ( isset( $wp_customize ) ) {
+    if ( isset( $wp_customize ) || is_admin() ) {
         return $tag;
     }
     return str_replace( ' src', ' defer="defer" src', $tag );
