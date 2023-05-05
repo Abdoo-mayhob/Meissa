@@ -152,6 +152,9 @@ pre {
     border: 1px solid var(--clr-acc);
     border-radius: 10px;
 }
+figure{
+    max-width: 100%;
+}
 img{
     width: 100%;
     height: auto;

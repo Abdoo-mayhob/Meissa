@@ -6,7 +6,6 @@
             <div class="content">
                 <? the_content() ?>
             </div>
-            
             <div class="post-meta date dashicons-calendar">
                 <? the_date() ?>
             </div>
