@@ -14,16 +14,15 @@ function meissa_theme_scripts() {
 	// wp_enqueue_style( 'meissa-style', get_stylesheet_uri(), [], null);
 	// wp_enqueue_style('dashicons');
 	$css_files_to_inline = [
-		'meissa-style-reset' => get_stylesheet_directory_uri() . '/css/css-reset.css',
-		'bootstrap-grid-rtl' => get_stylesheet_directory_uri() . '/css/bootstrap-grid.rtl.min.css',
-		'meissa-style' 		 => get_stylesheet_uri(),
-		'meissa-dashicons' 	 => get_stylesheet_directory_uri() . '/css/meissa-dashicons.min.css'
+		'meissa-style-reset' => get_template_directory() . '/css/css-reset.css',
+		'bootstrap-grid-rtl' => get_template_directory() . '/css/bootstrap-grid.rtl.min.css',
+		'meissa-style' 		 => get_template_directory() . '/style.css',
+		'meissa-dashicons' 	 => get_template_directory() . '/css/meissa-dashicons.min.css'
 	];
 
 	foreach($css_files_to_inline as $handle => $path){
 		meissa_inline_css_file($path, $handle);
 	}
-
 
 	// wp_enqueue_style( 'meissa-font-tajawal', "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap", [], null);
 
@@ -56,7 +55,9 @@ function meissa_theme_scripts() {
 
 function meissa_inline_css_file($css_file_path, $handle){
 	// Minify on the fly
-	$buffer = file_get_contents($css_file_path);
+	ob_start();
+	require_once($css_file_path); // Note that file_get_contents will load https (maybe cached) files
+	$buffer = ob_get_clean();
 	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
     $buffer = str_replace(': ', ':', $buffer);
     $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
