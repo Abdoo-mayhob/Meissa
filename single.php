@@ -3,11 +3,7 @@
     <div class="row content-row">
         <main class="col-md-8 px-4">
             <?= meissa_get_breadcrumb()?>
-            <h1 class="title">
-                <? the_title() ?>
-            </h1>
             <div class="content">
-                <? the_post_thumbnail( 'full' )?>
                 <? the_content() ?>
             </div>
             
