@@ -170,9 +170,9 @@ function meissa_remove_wp_bloat(){
     wp_dequeue_style( 'wc-blocks-style' ); // WooCommerce block CSS
 }
 
+
 // ------------------------------------------------------
 // Remove wp-emoji
-
 add_action( 'init', 'meissa_remove_wp_emoji' );
 function meissa_remove_wp_emoji() {
  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
