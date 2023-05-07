@@ -74,6 +74,7 @@ function meissa_theme_setup() {
     register_nav_menu('footer-menu', 'Footer Menu' );
 }
 
+
 // ------------------------------------------------------------------------------------------------
 // Edit .htaccess to serve webp when possible and activate php short tags
 add_action('admin_init', 'meissa_edit_htaccess');
@@ -98,6 +99,7 @@ AddType image/webp .webp
     insert_with_markers(get_home_path().".htaccess", "Meissa", $lines);
 }
 
+
 // ------------------------------------------------------------------------------------------------
 // Allow SVG Upload. code src: WPCode plugin lib
 add_filter(
@@ -117,15 +119,10 @@ add_filter(
 	}
 );
 
-/**
- * Add SVG files mime check.
- *
- * @param array        $wp_check_filetype_and_ext Values for the extension, mime type, and corrected filename.
- * @param string       $file Full path to the file.
- * @param string       $filename The name of the file (may differ from $file due to $file being in a tmp directory).
- * @param string[]     $mimes Array of mime types keyed by their file extension regex.
- * @param string|false $real_mime The actual mime type or false if the type cannot be determined.
- */
+
+// ------------------------------------------------------------------------------------------------
+// Allow SVG uploads
+
 add_filter(
 	'wp_check_filetype_and_ext',
 	function ( $wp_check_filetype_and_ext, $file, $filename, $mimes, $real_mime ) {
@@ -173,6 +170,7 @@ function meissa_remove_wp_bloat(){
 
 // ------------------------------------------------------
 // Remove wp-emoji
+
 add_action( 'init', 'meissa_remove_wp_emoji' );
 function meissa_remove_wp_emoji() {
  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -195,6 +193,7 @@ function meissa_disable_emojis_tinymce( $plugins ) {
 
 // ------------------------------------------------------
 // Defer all Scripts (including jquery)
+
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 
     // Fix: Customizer not loading on defer.
@@ -209,6 +208,7 @@ add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 
 // ------------------------------------------------------
 // Remove comments completely
+
 add_action('admin_init', 'remove_comments_completely');
 function remove_comments_completely () {
     // Redirect any user trying to access comments page

@@ -1,9 +1,9 @@
-name: FTP Deploy on Push
+name: FTP Deploy on Push (STAGE)
 
 on:
   push:
     branches:
-    - main
+    - stage
   
 jobs:
   web_deploy:
