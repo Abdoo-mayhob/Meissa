@@ -14,7 +14,7 @@
         <div class="col-md-6 center-vertically">
             <h2 class="h1">مقالات مختارة</h2>
             <div class="row">
-                <? $featured_posts = meissa_get_featured_posts(6); ?>
+                <? $featured_posts = meissa_get_featured_posts(4); ?>
                 <? while (  $featured_posts->have_posts() ):  $featured_posts->the_post();?>
                     <article class="col-12 pb-3">
                         <? get_template_part('template-parts/loop') ?>

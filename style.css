@@ -20,13 +20,11 @@ General Notes:
 - Most Images are background-image instead of <img> because it won't load when display:none (better performance)
 TODO:
 --------------
+- Add Quick Script Snippets adder dashbord
 - Lazy Load BG Images with js
-- defer css
 - Auto Complete for Search
 - Default for the_exerept (Pages and Posts)
 - Default for the_archive_description (Taxonomies)
-- Hyper Rendering
-
 --------------
 
 sm:  576px
