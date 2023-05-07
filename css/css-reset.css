@@ -17,8 +17,11 @@ time, mark, audio, video, input,button {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
+
+	/* To avoid CLS:*/
+	font-family: 'Tajawal', sans-serif; 
+	--fs-li: 21px;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
