@@ -67,3 +67,40 @@ function load_more_posts(e){
 }
 
 }); // JQuery
+
+
+/*
+// Same code as above, can improv performance but less ease-of-edit, and I already got 100% on lighthouse so nevermind
+document.querySelector("form.newsletter button").addEventListener("click", function(e) {
+    e.preventDefault();
+    let emailDomEle = document.querySelector('form.newsletter input[type="email"]');
+    if (emailDomEle.checkValidity()) {
+        let data = {
+            action: 'meissa_newsletter_subs_add_sub',
+            email: emailDomEle.value
+        };
+        let button = this;
+        button.style.pointerEvents = 'none';
+        button.style.opacity = '0.5';
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', meissa_globals.ajaxurl);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+                console.log(response);
+                if (response['status'] == 200) {
+                    console.log("DONE !");
+                } else {
+                    console.log("Error !");
+                }
+                button.style.pointerEvents = 'initial';
+                button.style.opacity = '1';
+            }
+        };
+        xhr.send(encodeURI('action=' + data.action + '&email=' + data.email));
+    }
+    emailDomEle.reportValidity();
+});
+
+*/
