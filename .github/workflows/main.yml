@@ -7,7 +7,7 @@ on:
   
 jobs:
   web_deploy:
-    name: deploy to staging
+    name: deploy to main
     runs-on: ubuntu-latest
     steps:
     - name: Get Latest Code
@@ -16,8 +16,8 @@ jobs:
     - name: Sync Files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.FTP_SERVERNAME}}
-        username: ${{ secrets.FTP_USERNAME}}
-        password: ${{ secrets.FTP_PASSWORD}}
-        server-dir: /
+        server: ${{ secrets.MAIN_FTP_SERVERNAME}}
+        username: ${{ secrets.MAIN_FTP_USERNAME}}
+        password: ${{ secrets.MAIN_FTP_PASSWORD}}
+        server-dir: /public_html/wp-content/themes/meissa/
   
