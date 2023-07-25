@@ -303,7 +303,12 @@ aside {
     -o-transition: 0.3s;
     transition: 0.3s;
 }
-
+.content ul {
+    list-style: inside;
+}
+.content li {
+    padding: 8px;
+}
 
 /* === Archive === */
 

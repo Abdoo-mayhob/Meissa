@@ -7,7 +7,7 @@
                 <? wp_title(); ?>
             </h1>
             <div class="description">
-                <? is_archive() ? the_archive_description() : the_excerpt() ?>
+                <? is_archive() ? the_archive_description() : (is_search()? '' : the_excerpt()) ?>
             </div>
             <div class="container py-5">
                 <div class="row g-5 archive-posts" data-template="vert-excerpt">
