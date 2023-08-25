@@ -56,7 +56,8 @@ function meissa_get_featured_posts($number_of_posts){
 
 
 function meissa_get_logo_url($size = 'full'){
-    return esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $size )[0] );
+    // return esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $size )[0] ); // Old WP-Media Png Logo
+    return SITE_URL . '/wp-content/uploads/Logo.svg';
 }
 
 // Used to help display bg img instead of <img> with minimal syntax
@@ -67,7 +68,7 @@ function meissa_post_thumb_url(){
     // return get_the_post_thumbnail_url(get_the_ID(),'thumbnail');
     // Both work, But this is a bit less code in wp core
     $url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' ) ;
-    return $url[0] ?? meissa_get_logo_url('thumbnail');
+    return $url[0] ?? meissa_get_logo_url();
      
 }
 
