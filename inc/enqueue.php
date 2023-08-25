@@ -28,7 +28,7 @@ function meissa_theme_scripts() {
 
 
 	// This will also include jquery (without jquery migrate) 
-    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', ['jquery-core'], '1.1');
+    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', [], '1.2');
 
 	//
 	if(defined('WP_DEBUG') && true === WP_DEBUG){ 
@@ -41,6 +41,7 @@ function meissa_theme_scripts() {
 	// is_page(MEISSA_MOST_READ_PAGE_NAME) will not work here cuz we modified the default wp_query
 	if(is_archive() || get_the_title() == MEISSA_MOST_READ_PAGE_NAME){ 
 		wp_enqueue_script('load-more-js', get_stylesheet_directory_uri() . '/js/load-more.js', ['jquery'], '1.1');
+		wp_enqueue_script('advanced-line-clamp-js', get_stylesheet_directory_uri() . '/js/advanced-line-clamp.js', [], '1.1');
 		global $wp_query;
 		wp_localize_script( 'load-more-js', 'meissa_globals', [ 
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
