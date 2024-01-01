@@ -33,9 +33,9 @@
 <div class="read-more-wrap-for-bg">
     <div class="container py-5">
         <div class="row gy-4 read-more">
-            <h1 class="col-12 read-more-title">
+            <h2 class="col-12 read-more-title h1">
                 اقرأ أيضاً
-            </h1>
+            </h2>
             <? $related_post_query = meissa_get_related_posts();
             while ( $related_post_query->have_posts() ) {
                 $related_post_query->the_post();
