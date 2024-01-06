@@ -9,18 +9,15 @@ document.querySelectorAll('form.newsletter button').forEach(function(button) {
             button.style.opacity = '0.5';
 
             // Ajax
-            var data = {
+            var data = new URLSearchParams({
                 action: 'meissa_newsletter_subs_add_sub',
                 email: email_dom_ele.value
-            };
-
+            });
+            
             fetch(meissa_globals.ajaxurl, {
                 method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+                body: data
+            })            
             .then(response => response.json())
             .then(response => {
                 console.log(response);

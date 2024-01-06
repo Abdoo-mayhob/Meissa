@@ -7,7 +7,7 @@
 
 define('MEISSA_NEWSLETTER_SUBS_TABLE' , 'meissa_newsletter_subs');
 
-add_action('init', 'meissa_newsletter_subs_init_db');
+add_action('after_switch_theme', 'meissa_newsletter_subs_init_db');
 function meissa_newsletter_subs_init_db() {
 	global $wpdb;
 
