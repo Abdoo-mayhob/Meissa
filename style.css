@@ -309,7 +309,9 @@ aside {
 .content li {
     padding: 8px;
 }
-
+.content iframe{
+    max-width: 100%;
+}
 /* === Archive === */
 
 
