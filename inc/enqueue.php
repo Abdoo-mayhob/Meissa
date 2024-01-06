@@ -30,6 +30,10 @@ function meissa_theme_scripts() {
 	// This will also include jquery (without jquery migrate) 
     wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', [], '1.2');
 
+	$js_vars_to_localize = [
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+	];
+
 	//
 	if(defined('WP_DEBUG') && true === WP_DEBUG){ 
 		wp_localize_script( 'meissa-js', 'MEISSA_WP_DEBUG', [ 
@@ -43,15 +47,14 @@ function meissa_theme_scripts() {
 		wp_enqueue_script('load-more-js', get_stylesheet_directory_uri() . '/js/load-more.js', ['jquery'], '1.1');
 		wp_enqueue_script('advanced-line-clamp-js', get_stylesheet_directory_uri() . '/js/advanced-line-clamp.js', [], '1.1');
 		global $wp_query;
-		wp_localize_script( 'load-more-js', 'meissa_globals', [ 
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'current_wp_query_vars' => json_encode( $wp_query->query_vars ),
-		]);
+		$js_vars_to_localize['current_wp_query_vars'] = json_encode( $wp_query->query_vars );
 	}
 	if(is_404()){ 
 		wp_enqueue_script('particles-js', get_stylesheet_directory_uri() . '/js/particles.min.js',[], '2.0',true);
 		wp_enqueue_script('404-js', get_stylesheet_directory_uri() . '/js/404.js',['particles-js'], '1.0',true);
 	}
+	
+	wp_localize_script( 'meissa-js', 'meissa_globals', $js_vars_to_localize);
 }
 
 function meissa_inline_css_file($css_file_path, $handle){
