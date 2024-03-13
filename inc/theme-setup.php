@@ -15,7 +15,7 @@ function meissa_theme_setup() {
     // ------------------------------------------------------
     // Make sure that new uploaded media are only 2 sizes: the org and thumbnail
 
-    // This Generates a totaly new size for somereason
+    // This Generates a totally new size for some reason
     // set_post_thumbnail_size(250,130);
 
     // This will remove all non default image sizes. 
@@ -36,7 +36,7 @@ function meissa_theme_setup() {
     update_option( 'large_size_w', 0 );
     update_option( 'large_size_h', 0 );
 
-    // Upadte the Thumbnail default size (250w*130hmax250h)
+    // Update the Thumbnail default size (250w*130hmax250h)
     update_option( 'thumbnail_size_w', 250 );
     update_option( 'thumbnail_size_h', 250 );
 
@@ -257,7 +257,7 @@ add_action('init', function () {
 add_action( 'customize_register', 'meissa_theme_customizer' );
 function meissa_theme_customizer( $wp_customize ) {
 	$wp_customize->add_panel( 'meissa_theme_setup_panel', [
-        'title'      => __( 'Meissa Theme Options', 'mytheme' ),
+        'title'      => __( 'Meissa Theme Options', 'meissa' ),
         'priority'   => 30,
     ] );
 
@@ -277,7 +277,7 @@ function meissa_theme_customizer( $wp_customize ) {
         'settings' => 'meissa_footer_logo',
     ] ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'meissa_footer_decor_image', [
-        'label'    => __( 'Footer Decore Image', 'meissa' ),
+        'label'    => __( 'Footer Decor Image', 'meissa' ),
         'section'  => 'meissa_footer_logo_section',
         'settings' => 'meissa_footer_decor_image',
     ] ) );
@@ -336,7 +336,7 @@ function meissa_theme_customizer( $wp_customize ) {
 
 
 // --------------------------------------------------------------------------------------
-// Scripts Section Excution
+// Scripts Section Execution
 
 add_action( 'wp_head', 'meissa_echo_header_scripts');
 function meissa_echo_header_scripts() {

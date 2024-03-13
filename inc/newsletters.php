@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * All "Newsletter" releated Codes.
+ * All "Newsletter" related Codes.
  * 
  */
 

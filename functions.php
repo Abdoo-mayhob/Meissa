@@ -12,10 +12,6 @@ require_once get_template_directory() . "/inc/most-read.php";
 require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/enqueue.php";
 
-// Required Plugins
-// Note to Devs: This has almost no impact on performance
-require_once get_template_directory() . "/inc/class-tgm-plugin-activation.php";
-
 // --------------------------------------------------------------------------------------
 // Getters
 
