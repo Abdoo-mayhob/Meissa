@@ -12,9 +12,26 @@ require_once get_template_directory() . "/inc/most-read.php";
 require_once get_template_directory() . "/inc/newsletters.php";
 require_once get_template_directory() . "/inc/enqueue.php";
 
-// Required Plugins
-// Note to Devs: This has almost no impact on performance
-require_once get_template_directory() . "/inc/class-tgm-plugin-activation.php";
+// Dump Data
+function dd($var, $display=false, $msg = ''){
+    $display_class = ($display)? 'style="display:block;"' : '';
+    echo "<pre $display_class class='dd'>$msg ";var_dump($var);echo'</pre>';
+    
+}
+// Dump Data & Die
+function ddd($var, $display=false, $msg = ''){
+    dd($var, $display, $msg);
+    die;   
+}
+// Dump Data to debug.log
+function ldd($var,$msg = ''){
+    error_log($msg . print_r($var,1));
+}
+// Get Backtrace function call
+function get_backtrace(): string{
+    $e = new \Exception;
+    return $e->getTraceAsString();
+}
 
 // --------------------------------------------------------------------------------------
 // Getters
