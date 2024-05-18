@@ -1,6 +1,4 @@
 <?php 
-// Used in footer.php
-$GLOBALS['start_ms']  = microtime(true);
 
 // Globals
 define('SITE_URL' , site_url());

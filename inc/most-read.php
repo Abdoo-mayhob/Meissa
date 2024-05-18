@@ -17,8 +17,8 @@ function meissa_get_most_read_posts(){
         'posts_per_page' => '6',
 		'meta_key'      => MEISSA_POST_VIEWS_COUNT_META_KEY,
 		'orderby'       => 'meta_value_num',
-		'order'         => 'DESC'
-        //'no_found_rows' => true, // Ignores pagination, Increases Performance
+		'order'         => 'DESC',
+        'no_found_rows' => true, // Ignores pagination, Increases Performance
     ]);
 }
 

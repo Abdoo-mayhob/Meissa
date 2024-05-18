@@ -9,6 +9,9 @@
 // --------------------------------------------------------------------------------------
 // Theme Support Setup
 
+// Disable gutenberg
+add_filter('use_block_editor_for_post', '__return_false');
+
 add_action( 'after_setup_theme', 'meissa_theme_setup' );
 function meissa_theme_setup() {
 
@@ -25,20 +28,20 @@ function meissa_theme_setup() {
     }
 
     // Remove the medium default size
-    update_option( 'medium_size_w', 0 );
-    update_option( 'medium_size_h', 0 );
+    // update_option( 'medium_size_w', 0 );
+    // update_option( 'medium_size_h', 0 );
 
-    // Remove the medium_large default size
-    update_option( 'medium_large_size_w', 0 );
-    update_option( 'medium_large_size_h', 0 );
+    // // Remove the medium_large default size
+    // update_option( 'medium_large_size_w', 0 );
+    // update_option( 'medium_large_size_h', 0 );
 
-    // Remove the large default size
-    update_option( 'large_size_w', 0 );
-    update_option( 'large_size_h', 0 );
+    // // Remove the large default size
+    // update_option( 'large_size_w', 0 );
+    // update_option( 'large_size_h', 0 );
 
-    // Upadte the Thumbnail default size (250w*130hmax250h)
-    update_option( 'thumbnail_size_w', 250 );
-    update_option( 'thumbnail_size_h', 250 );
+    // // Upadte the Thumbnail default size (250w*130hmax250h)
+    // update_option( 'thumbnail_size_w', 250 );
+    // update_option( 'thumbnail_size_h', 250 );
 
 
     // Show excerpt field in pages
@@ -64,9 +67,9 @@ function meissa_theme_setup() {
 
     // ------------------------------------------------------
     // Create Featured Posts Tag Setup
-    if( !term_exists( 'مقالات مختارة', 'post_tag' ) ) {
-        wp_insert_term( 'مقالات مختارة', 'post_tag' );
-    }
+    // if( !term_exists( 'مقالات مختارة', 'post_tag' ) ) {
+    //     wp_insert_term( 'مقالات مختارة', 'post_tag' );
+    // }
 
     // ------------------------------------------------------
     // Menus Setup
