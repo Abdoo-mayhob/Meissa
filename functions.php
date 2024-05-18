@@ -3,6 +3,7 @@
 // Globals
 define('SITE_URL' , site_url());
 define('THEME_URI' , get_stylesheet_directory_uri());
+define('CACHE_KEY_PREFIX' , 'meissa_cache');
 
 
 require_once get_template_directory() . "/inc/theme-setup.php";
@@ -120,5 +121,70 @@ function meissa_load_more_posts() {
 	<?php
 	endwhile ;
 	die;
+}
+
+
+// --------------------------------------------------------------------------------------
+// Caching
+
+/*
+ * Cache the html of the template part. Becuase menus rarly change. 
+ * This will save alot of DB Queries
+ */ 
+
+function cache_get_template_part($slug, $name = null, $args = [], $skip_cache = false){
+
+    $key = CACHE_KEY_PREFIX . 'tp_' . $slug . $name . implode('_', $args);
+
+    $html = get_transient($key);
+
+    if(!empty($html)){
+        echo '<!-- Cached ! -->' . $html;
+        return;
+    }
+
+    // Set Cache
+    ob_start();
+    get_template_part($slug, $name, $args);
+    $html = ob_get_clean();
+
+    set_transient($key, $html, 1 * MONTH_IN_SECONDS);
+    echo $html;
+
+}
+
+/*
+ * Clear All Cache when any post is saved.
+ * Will be recached on the next load btw.
+ */
+add_action('init', function () {
+    if(!get_query_var( 'clear_meissa_cache', false ))return;
+    clear_all_meissa_cache();
+});
+
+add_action('save_post', function ($post_id, $post, $updating ){
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (wp_is_post_revision($post_id)) return;
+    if ($post->post_status == 'auto-draft')return; // an auto-draft is generated on the hit of "Add New Post"
+
+    clear_all_meissa_cache();
+
+}, 999, 3);
+
+function clear_all_meissa_cache(){
+    global $wpdb;
+    $prefix = CACHE_KEY_PREFIX;
+    $option_name = "%transient_{$prefix}_%";
+    $sql = "SELECT `option_name` AS `name`
+            FROM  $wpdb->options
+            WHERE `option_name` LIKE '$option_name'";
+
+    $menus = $wpdb->get_results($sql);
+
+    foreach($menus as $menu) {
+        $option_name = $menu->name;
+        delete_transient(str_replace('_transient_', '', $option_name));
+    }
 }
 
