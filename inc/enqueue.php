@@ -28,10 +28,12 @@ function meissa_theme_scripts() {
 
 
 	// This will also include jquery (without jquery migrate) 
-    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', [], '1.3');
+    wp_enqueue_script('meissa-js', get_stylesheet_directory_uri() . '/js/main.js', [], '1.5');
 
 	$js_vars_to_localize = [
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'post_id' => get_the_ID(),
+		'is_single' => is_single()
 	];
 
 	//

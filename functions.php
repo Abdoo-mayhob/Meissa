@@ -54,11 +54,23 @@ function meissa_get_related_posts(){
 }
 
 function meissa_get_latest_posts(){
-    return new WP_Query([
+
+    $cache_key = CACHE_KEY_PREFIX . '_latest_q';
+
+	$q = get_transient($cache_key);
+	if(!empty($q))
+		return $q;
+	
+
+    $q =  new WP_Query([
         'posts_per_page' => '6',
         'post__not_in' => [get_the_ID()],
         'no_found_rows' => true, // Ignores pagination, Increases Performance
     ]);
+
+    
+	set_transient($cache_key, $q, 1 * DAY_IN_SECONDS);
+	return $q;
 }
 
 function meissa_get_featured_posts($number_of_posts){
@@ -158,7 +170,7 @@ function cache_get_template_part($slug, $name = null, $args = [], $skip_cache = 
  * Will be recached on the next load btw.
  */
 add_action('init', function () {
-    if(!get_query_var( 'clear_meissa_cache', false ))return;
+    if(!( $_GET['clear_meissa_cache'] ?? false ))return;
     clear_all_meissa_cache();
 });
 
@@ -188,3 +200,62 @@ function clear_all_meissa_cache(){
     }
 }
 
+
+// --------------------------------------------------------------------------------------
+// One Time Scripts
+
+add_action('init', function(){
+
+    $ots = $_GET['ots'] ?? false;
+
+    if(empty($ots))return;
+
+
+    if($ots == 'terminal_slash'){
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'post__in' => [2937]
+        ];
+        
+
+        $posts_array = get_posts($args);
+        echo "You got total of " . count($posts_array) . " Posts <br>";
+        
+        foreach ($posts_array as $post) {
+            echo "==================================================<br>";
+            echo "Checking Post ID {$post->ID} {$post->post_title}:";
+            $hrefs = [];
+            $content = $post->post_content;
+            if(empty($content)) continue;
+        
+            $dom = new DOMDocument;
+            @$dom->loadHTML($content);
+            $tags = $dom->getElementsByTagName('a');
+            $edited = false;
+            echo count($tags) . " Link: <br>";
+            foreach ($tags as $tag) {
+                $href = $tag->getAttribute('href');
+                if(str_contains($href, 'meissa.space') == false)continue;
+                if(substr($href, -1) == '/')continue;
+
+                echo " - Editing: "  . $tag->nodeValue . '<br>';
+                $newHref = $href . '/';
+                $tag->setAttribute('href', $newHref);
+                $edited = true;
+            }
+        
+            if($edited){
+                $newContent = $dom->saveHTML();
+                wp_update_post([
+                    'ID' => $post->ID,
+                    'post_content' => $newContent
+                ]);
+                echo " Saving Post.<br>";
+            }
+        }
+    } // if
+    
+    die;
+},0);

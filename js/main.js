@@ -35,3 +35,27 @@ document.querySelectorAll('form.newsletter button').forEach(function(button) {
         email_dom_ele.reportValidity(); // Shows the Tooltip
     });
 });
+
+
+// Increase Post Views Count via AJAX
+if(meissa_globals.is_single == true && meissa_globals.post_id != undefined){
+    var data = new URLSearchParams({
+        action: 'set_post_views',
+        post_id: meissa_globals.post_id
+    });
+    
+    fetch(meissa_globals.ajaxurl, {
+        method: 'POST',
+        body: data
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.text();
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+    
+}
