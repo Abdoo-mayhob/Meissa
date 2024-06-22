@@ -266,9 +266,26 @@ aside {
 #breadcrumbs{
     margin: 16px 0;
 }
+.post-meta.date > span {
+    padding-inline-end: 5px;
+}
 .post-meta.date,
 .post-meta.tags{
     color: var(--clr-acc);
+}
+.post-meta.date,
+.post-meta.read-time{
+    display: inline-block !important;
+    padding-inline-end: 20px;
+}
+.post-meta.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-block: 30px;
+}
+.post-meta.tags ::before {
+    content: '#';
 }
 .read-more-wrap-for-bg{
     background-color: var(--clr-bg-lt);

@@ -3,14 +3,18 @@
     <div class="row content-row">
         <main class="col-md-8 px-4">
             <?= meissa_get_breadcrumb()?>
+            <div class="post-meta date">
+                <?php the_date('Y-n-j','' ,'<span class="dashicons-calendar"></span>') ?>
+            </div>
+            <div class="post-meta read-time">
+                <?php echo do_shortcode('[est-read-time-widget]') ?>
+            </div>
             <div class="content">
-                <? the_content() ?>
+                <?php the_content() ?>
             </div>
-            <div class="post-meta date dashicons-calendar">
-                <? the_date() ?>
-            </div>
-            <div class="post-meta tags dashicons-tag">
-                <? the_tags('') ?>
+            <hr class="mt-4">
+            <div class="post-meta tags">
+                <?php the_tags(' ', ' ',' ') ?>
             </div>
         </main>
         <aside class="col-md-4 px-4">
