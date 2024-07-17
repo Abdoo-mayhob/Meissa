@@ -1,17 +1,39 @@
-<? 
+<?php
 /* Template Name: Most-Read-Template */
-/* 
- *
- * Notes for Developers:
- * Instead of overwriting the main query with a new query. I tried modifying the org main query early with the add_filter( 'request', ... hook
- * My intentions were to edit the Main query vars so early with the mentiond filter so that I trick wp of thinking that the most-read page is
- *  actually an archive and should load the archive.php templete with the rest of the custom query vars (meta query and etc)
- * But I failed, I even asked GPT-4 and it insisted on using another wp_query and not to early edit the main one. So here I'm :)
- *
- */
-
-$most_read_posts_query =  meissa_get_most_read_posts();
-query_posts($most_read_posts_query->query_vars); // Yeah I know it's not recommended, but it is used fine here.
-require_once get_template_directory() . '/archive.php';
-?>
-
+get_header() ?>
+<div class="container py-4">
+    <div class="row content-row">
+        <main class="col-md-8">
+            <?= meissa_get_breadcrumb()?>
+            <h1 class="title">
+                <? wp_title(); ?>
+            </h1>
+            <div class="description">
+                <? the_content(); ?>
+            </div>
+            <div class="container py-5">
+                <div class="row g-5 archive-posts" data-template="vert-excerpt">
+                    <?php $q =  meissa_get_most_read_posts();?>
+                    <? while ($q->have_posts() ): $q->the_post();?>
+                        <article class="col-md-6 p-4">
+                            <? get_template_part('template-parts/loop', 'vert-excerpt') ?>
+                        </article>
+                    <? endwhile ?>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-4">
+                        <button role="button" type="button" id="load-more-button">تحميل المزيد</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="col-md-4">
+            <h2>آخر المقالات</h2>
+            <? $latest_posts = meissa_get_latest_posts(); ?>
+            <? while (  $latest_posts->have_posts() ):  $latest_posts->the_post();?>
+                <? get_template_part('template-parts/loop','vert') ?>
+            <? endwhile ?>
+        </aside>
+    </div>
+</div>
+<?php get_footer() ?>
