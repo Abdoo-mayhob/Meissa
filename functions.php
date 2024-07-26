@@ -102,13 +102,14 @@ function meissa_post_thumb_url(){
 
 
 // --------------------------------------------------------------------------------------
-// 
+// Misc
 
-add_filter( 'get_the_archive_title', 'remove_wp_default_arhive_title_prefix', 10, 3 );
-function remove_wp_default_arhive_title_prefix( $title, $original_title, $prefix){
+add_filter( 'get_the_archive_title', function( $title, $original_title, $prefix){
 	return $original_title;
-}
+}, 10, 3 );
 
+// WPRocket LazyLoad Plugin : To use native lazy load on browsers supporting this feature
+add_filter( 'rocket_use_native_lazyload', '__return_true' );
 
 // --------------------------------------------------------------------------------------
 // Ajax
