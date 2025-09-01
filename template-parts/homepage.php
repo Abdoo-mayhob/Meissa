@@ -6,7 +6,45 @@
             شاركنا رحلة التعلم !</p>
         </div>
         <div class="meissa-hide-md col-md-6"
-            <? meissa_bg_img(THEME_URI.'/meissa-assets/James-Web-Telescope.webp','400px') ?>>
+            <?php meissa_bg_img(THEME_URI.'/meissa-assets/James-Web-Telescope.webp','400px') ?>>
+        </div>
+    </section>
+    <section class="row p-4" id="final-note">
+        <style>
+            #final-note {
+                border: 2px dashed var(--clr-pri);
+                background: var(--clr-bg-lt);
+            }
+            #final-note h2 {
+                color: var(--clr-pri);
+                font-size: var(--fs-ter);
+            }
+        </style>
+        
+        <div class="col-md-6 py-3"> 
+            
+            <h2>زوار و قراء مدونة ميسان الكرام</h2>
+            <p>
+                توقف النشر في المدونة في تاريخ يناير 2025, بسبب ظروف خارجة عن إرادتنا 🙏
+            </p>
+            <p>يبقى المحتوى هنا متاحًا للفضوليين والمهتمين.</p>
+            <br>
+            <h2>شكرا خاص لفريق المدونة الكفؤ 🧡</h2>
+            <p><strong><a href="https://abdoo.me">عبد اللطيف الميهوب</a></strong>: المدير, الممول و مسؤول التقنية في المدونة. </p>
+            <p><strong><a href="https://meissa.space/ali-alkhatib/">علي الخطيب</a></strong>: رئيس التحرير ومدير المحتوى.</p>
+        </div>
+
+        <div class="col-md-6 py-3" style="direction: ltr; text-align: left;">
+            <h2>Dear Visitors and Readers of Meissa Blog</h2>
+            <p>
+                Publishing on the blog stopped in January 2025, due to circumstances beyond our control 🙏
+            </p>
+            <p>The content remains available here for curious minds and enthusiasts.</p>
+            <br>
+            <h2>Special Thanks to Our Dedicated Team 🧡</h2>
+            <p><strong><a href="https://abdoo.me">Abdoo</a></strong>: Blog Manager, Funder, and Technical Lead.</p>
+            <p><strong><a href="https://meissa.space/ali-alkhatib/">Ali Al-Khatib</a></strong>: Editor-in-Chief and Content Director.</p>
+
         </div>
     </section>
     <section class="row">
